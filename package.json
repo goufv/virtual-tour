@@ -2,9 +2,12 @@
   "name": "ufv",
   "main": "index.html",
   "license": "MIT",
+  "homepage": "http://denimandsteel.github.io/ufv-tour"
   "scripts": {
     "start": "parcel serve ./src/index.html",
-    "build": "parcel build --out-dir ./dist ./src/index.html"
+    "build": "parcel build --out-dir ./dist ./src/index.html",
+    "predeploy": "rm -r dist && yarn run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^16.13.1",
@@ -13,6 +16,7 @@
   "devDependencies": {
     "@parcel/transformer-css": "^2.0.0-alpha.3",
     "@parcel/transformer-postcss": "^2.0.0-alpha.3",
+    "gh-pages": "^3.1.0",
     "parcel": "^2.0.0-beta.1",
     "sass": "^1.29.0"
   }
