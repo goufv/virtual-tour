@@ -3,9 +3,14 @@
   "main": "dist/index.html",
   "license": "MIT",
   "homepage": "http://denimandsteel.github.io/ufv-tour",
+  "targets": {
+    "": {
+      "publicUrl": "/ufv-tour/"
+    }
+  },
   "scripts": {
     "start": "parcel serve ./src/index.html",
-    "build": "parcel build ./src/index.html",
+    "build": "parcel build --public-url /ufv-tour/ ./src/index.html",
     "predeploy": "rm -r dist && yarn run build",
     "deploy": "gh-pages -d dist"
   },
