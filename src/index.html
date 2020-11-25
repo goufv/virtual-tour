@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My Parcel Project</title>
+    <style type="text/css">
+      body {
+        margin: 0;
+        font-family: Helvetica;
+      }
+      .main {
+        margin: 0 auto;
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: 750px;
+      }
+      @media screen and (min-width: 992px) {
+        .main {
+          max-width: 728px;
+        }
+      }
+      @media screen and (min-width: 1200px) {
+        .main {
+          max-width: 878px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main">
+      <h1>Before</h1>
+      <script src="./index.tsx"></script>
+      <h1>After</h1>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+#ufv-map-root {
+  .stage {
+    // margin: 0 auto;
+    // max-width: 400px;
+    position: relative;
+    overflow: hidden;
+    @media screen and (min-width: 750px) {
+      display: flex;
+      > div {
+        width: 50%;
+        position: relative;
+      }
+    }
+  }
+  .player {
+    background: green;
+  }
+  .instructions {
+    display: none;
+    @media screen and (min-width: 750px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+  }
+  .modal {
+    pointer-events: none;
+    display: flex;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255,255,255,0.5);
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease-out;
+    z-index: 1;
+    video {
+      /*display: block;*/
+      width: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+      // transform: translateY(-110%);
+      transition: transform 0.3s ease-out;
+    }
+    &.active {
+      pointer-events: initial;
+      opacity: 1;
+    }
+    &.active video {
+      // transform: translateY(0%);
+    }
+
+  }
+  .building {
+    cursor: pointer;
+    .hover,
+    &.visited .initial,
+    .active { display: none; }
+    &:hover .hover,
+    &.visited .active { display: block; }
+    &:hover .initial { opacity: 1; }
+  }
+  /*.building .initial { opacity: .7; }*/
+
+  .locations {
+    .map {
+      position: relative;
+      height: 0;
+      width: 100%;
+      padding: 0;
+      padding-bottom: calc(100% * (4/3));
+      svg {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+
+
+}
