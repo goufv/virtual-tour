@@ -1,4 +1,7 @@
 #ufv-map-root {
+  *, *:after, *:before {
+    box-sizing: border-box;
+  }
   .stage {
     // margin: 0 auto;
     // max-width: 400px;
@@ -38,11 +41,24 @@
     align-items: center;
     transition: opacity 0.3s ease-out;
     z-index: 1;
+    .name {
+      background: rgba(0,0,0,0.5);
+      color: white;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 10px;
+    }
     video {
       /*display: block;*/
-      width: 90%;
+      width: 85%;
       border-radius: 10px;
       box-shadow: 0 0 8px rgba(0,0,0,0.3);
+      @media screen and (min-width: 750px) {
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+      }
       // transform: translateY(-110%);
       transition: transform 0.3s ease-out;
     }
