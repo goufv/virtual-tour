@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="98px" height="62px" viewBox="0 0 98 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>toggle-map</title>
+    <defs>
+        <filter x="-15.0%" y="-27.3%" width="130.0%" height="154.5%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.239015379 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="toggle-map" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-4-Copy-4" filter="url(#filter-1)" transform="translate(9.000000, 9.000000)">
+            <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="80" height="44" rx="22"></rect>
+            <rect id="Rectangle-Copy" stroke="#E6E6E6" stroke-width="2" x="6" y="6" width="68" height="32" rx="16"></rect>
+            <circle id="Oval" fill="#E45300" cx="22" cy="22" r="19"></circle>
+            <g id="location" transform="translate(14.000000, 12.000000)" fill="#FFFFFF">
+                <path d="M1.27677086,12.1472338 L1.31670134,12.2045245 C1.36531169,12.2763503 1.41652644,12.3464685 1.46774119,12.4234253 L7.25920551,20.6186311 C7.42847396,20.8580648 7.70537626,21 8.0013716,21 C8.29736693,21 8.57427368,20.858056 8.74353768,20.6186311 L14.5212244,12.4295545 C14.5767791,12.3525978 14.6297294,12.2782043 14.6835486,12.2106538 L14.7191391,12.1584941 L14.7191391,12.1576382 C15.7651226,10.563778 16.1913381,8.65172378 15.920498,6.77224194 C15.6496578,4.892782 14.6991616,3.17329472 13.2443179,1.92906286 C11.7894741,0.684918556 9.92659238,0 8.0004005,0 C6.07334197,0 4.21134908,0.684918556 2.75648311,1.92906286 C1.30077271,3.17320716 0.35029879,4.89276011 0.0794141681,6.77224194 C-0.19142601,8.65170189 0.235662818,10.5636029 1.2816619,12.1576382 L1.27677086,12.1472338 Z M8,5 C8.79534651,5 9.55865196,5.31640949 10.1210707,5.87892637 C10.6834894,6.44144324 11,7.20474614 11,7.99999 C11,8.79611388 10.6835895,9.55941678 10.1210707,10.1218537 C9.55855195,10.6842905 8.79524651,11 8,11 C7.20475349,11 6.44134804,10.6843705 5.8789293,10.1218537 C5.31651055,9.55933678 5,8.79603388 5,7.99999 C5,7.20464614 5.31641055,6.44134324 5.8789293,5.87892637 C6.44144805,5.3165095 7.20475349,5 8,5 Z"></path>
+            </g>
+            <g id="list" transform="translate(49.000000, 16.000000)" fill="#000000">
+                <path d="M2.3328,1.1664 C2.3328,2.7216 0,2.7216 0,1.1664 C0,-0.3888 2.3328,-0.3888 2.3328,1.1664" id="Fill-1"></path>
+                <polygon id="Fill-2" points="4.0824 2.3328 16.9128 2.3328 16.9128 0 4.0824 0"></polygon>
+                <path d="M2.3328,6.41560933 C2.3328,7.97026356 0,7.97026356 0,6.41560933 C0,4.85986356 2.3328,4.85986356 2.3328,6.41560933" id="Fill-3"></path>
+                <polygon id="Fill-4" points="4.0824 7.5816 16.9128 7.5816 16.9128 5.2488 4.0824 5.2488"></polygon>
+                <path d="M2.3328,11.0803907 C2.3328,12.6361364 0,12.6361364 0,11.0803907 C0,9.52573644 2.3328,9.52573644 2.3328,11.0803907" id="Fill-5"></path>
+                <polygon id="Fill-6" points="4.0824 12.2472 16.9128 12.2472 16.9128 9.9144 4.0824 9.9144"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
