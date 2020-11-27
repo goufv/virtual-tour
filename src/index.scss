@@ -1,3 +1,9 @@
+$light-green: #AEC6AA;
+$pale-green: #7cb232;
+$orange: #E45300;
+
+// OPEN SANS
+
 #ufv-map-root {
   *, *:after, *:before {
     box-sizing: border-box;
@@ -16,7 +22,7 @@
     }
   }
   .player {
-    background: green;
+    background: $light-green;
   }
   .instructions {
     display: none;
@@ -25,6 +31,17 @@
       justify-content: center;
       align-items: center;
       height: 100%;
+      h1 {
+        background: $pale-green;
+        padding: 20px;
+        width: 70%;
+        color: white;
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        font-size: 20px;
+        text-align: center;
+        font-weight: normal;
+      }
     }
   }
   .modal {
@@ -41,26 +58,50 @@
     align-items: center;
     transition: opacity 0.3s ease-out;
     z-index: 1;
+    .video-wrap {
+      overflow: hidden;
+      position: relative;
+      height: 0;
+      width: 85%;
+      padding: 0;
+      padding-bottom: calc(85% * (4/3));
+      background: black;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    }
     .name {
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
       background: rgba(0,0,0,0.5);
       color: white;
       position: absolute;
       bottom: 0;
       width: 100%;
       padding: 10px;
+      z-index: 1;
     }
     video {
-      /*display: block;*/
-      width: 85%;
       border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.3);
-      @media screen and (min-width: 750px) {
-        width: 100%;
-        border-radius: 0;
-        box-shadow: none;
-      }
+      display: block;
+      // width: 85%;
+      // height: auto;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
       // transform: translateY(-110%);
       transition: transform 0.3s ease-out;
+    }
+    @media screen and (min-width: 750px) {
+      .video-wrap {
+        width: 100%;
+        padding-bottom: calc(100% * (4/3));
+        box-shadow: none;
+      }
+      .video-wrap, .name, video {
+        border-radius: 0;
+      }
     }
     &.active {
       pointer-events: initial;
@@ -83,6 +124,31 @@
   /*.building .initial { opacity: .7; }*/
 
   .locations {
+    position: relative;
+    .toggle {
+      background: url(./images/toggle-map.svg);
+      background-size: contain;
+      width: 98px;
+      height: 62px;
+      z-index: 1;
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      text-indent: -9999px;
+      cursor: pointer;
+      // Bigger tap area.
+      &:after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        bottom: -10px;
+        left: -5px;
+        right: -10px;
+      }
+      &.active {
+        background-image: url(./images/toggle-list.svg);
+      }
+    }
     .map {
       position: relative;
       height: 0;
@@ -95,6 +161,42 @@
         width: 100%;
         left: 0;
         top: 0;
+      }
+    }
+    .list {
+      position: absolute;
+      background: rgba(255,255,255,.85);
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: auto;
+      padding: 10px;
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+    .location {
+      display: flex;
+      align-items: center;
+      .icon {
+        object-fit: cover;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        border-radius: 100%;
+        border: 3px solid $pale-green;
+      }
+      h1 {
+        flex: 1;
+        font-size: 22px;
+      }
+      &.visited {
+        color: #888;
+      }
+      &:hover, &.active {
+        color: $pale-green;
       }
     }
   }

@@ -17,6 +17,7 @@
     "prepvideosmall": "ffmpeg -i IMG_9076.MOV -vf scale=\"720:-1\" -preset veryslow -crf 28 -vcodec h264 -acodec mp2 IMG_9076_720_smaller.mp4"
   },
   "dependencies": {
+    "jquery": "^3.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
