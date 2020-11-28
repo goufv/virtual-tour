@@ -19,9 +19,20 @@ document.write(`
           <h1>Choose a location to learn more</h1>
         </div>
         <div class="modal">
+          <div class="backdrop"></div>
           <div class="video-wrap">
-            <div class="name"></div>
-            <video id="video" playsinline preload width="600" height="800">
+            <div class="controls">
+              <div class="icon back">Close Video</div>
+              <div class="icon sound">Unmute</div>
+              <div class="meta-reaction">
+                <div class="name"></div>
+                <div class="icon emoji-homg">OMG</div>
+                <div class="icon emoji-stars">Stars</div>
+                <div class="icon emoji-smile">Smile</div>
+              </div>
+              <div class="progress"></div>
+            </div>
+            <video id="video" muted playsinline preload width="600" height="800">
               <source src="">
             </video>
           </div>
@@ -123,6 +134,19 @@ const toggleVideo = ($item, location) => {
   }
 }
 
+const toggleSound = () => {
+  $('.sound').toggleClass('active')
+  $videoPlayer.get(0).muted = !$videoPlayer.get(0).muted;
+}
+
+const emote = (e) => {
+  console.log($(e.target));
+  $(e.target).addClass('emote');
+  setTimeout(() => {
+    $(e.target).removeClass('emote');
+  }, 2000)
+}
+
 const toggleList = () => {
   $('.locations .list, .locations .toggle').toggleClass('active')
   return false;
@@ -135,6 +159,7 @@ const showVideo = (location) => {
   $modal.find('.name').html(location.name)
   $videoPlayer.get(0).load()
   $videoPlayer.get(0).currentTime = 0
+  $('.progress').css({ transform: 'scaleX(0.00001)' })
   $modal.addClass('active')
   $videoPlayer.get(0).play()
   return false
@@ -167,8 +192,23 @@ const setup = (svgData) => {
   })
   $('.locations .toggle').on('touchstart', toggleList)
   $('.locations .toggle').on('click', toggleList)
-  $modal.on('touchstart', hideVideo)
-  $modal.on('click', hideVideo)
+  $modal.find('.back, .backdrop').on('touchstart', hideVideo)
+  $modal.find('.back, .backdrop').on('click', hideVideo)
+  $modal.find('.sound').on('touchstart', toggleSound)
+  $modal.find('.sound').on('click', toggleSound)
+  $modal.find('.meta-reaction .icon').on('touchstart', emote)
+  $modal.find('.meta-reaction .icon').on('click', emote)
+
+  $videoPlayer.on('timeupdate', () => {
+    $('.progress').css({ transform: 'scaleX(' + ($videoPlayer.get(0).currentTime / $videoPlayer.get(0).duration) + ')' })
+  })
+
+  if (window.location.hash !== '') {
+    const location = locations.find((l) => l.id === window.location.hash.replace('#', ''))
+    if (location) {
+      showVideo(location)
+    }
+  }
 }
 
 fetch(map)
