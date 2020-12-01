@@ -5,6 +5,7 @@
 import $ from "jquery"
 import map from 'url:./map.svg'
 import buildingIcon from 'url:./building.jpg'
+import captions from 'url:./test.vtt'
 
 document.write(`
   <div id="ufv-map-root">
@@ -22,8 +23,15 @@ document.write(`
           <div class="backdrop"></div>
           <div class="video-wrap">
             <div class="controls">
-              <div class="icon back">Close Video</div>
-              <div class="icon sound">Unmute</div>
+              <div class="top">
+                <div>
+                  <div class="icon back">Close Video</div>
+                  <div class="icon sound">Unmute</div>
+                </div>
+                <div class="caption-wrap">
+                  <div class="captions"></div>
+                </div>
+              </div>
               <div class="meta-reaction">
                 <div class="name"></div>
                 <div class="icon emoji-homg">OMG</div>
@@ -34,6 +42,7 @@ document.write(`
             </div>
             <video id="video" muted playsinline preload width="600" height="800">
               <source src="">
+              <track label="English" kind="subtitles" mode="showing" srclang="en" src="${captions}" default>
             </video>
           </div>
         </div>
@@ -47,7 +56,7 @@ const locations = [
     id: 'building-1',
     name: 'Building 1',
     // video: 'https://ddwhdx18r9qya.cloudfront.net/ufv/IMG_9076_720.mp4',
-    video: 'xhttps://ddwhdx18r9qya.cloudfront.net/ufv/IMG_9076_720_smaller.mp4',
+    video: 'https://ddwhdx18r9qya.cloudfront.net/ufv/IMG_9148_720_audio.mp4',
     icon: buildingIcon,
   },
   {
@@ -125,6 +134,11 @@ const locations = [
 const $videoPlayer = $('#video')
 const $modal = $('.modal')
 
+const tracks = $videoPlayer.get(0).textTracks[0]
+tracks.mode = 'hidden'
+const cues = tracks.cues
+window.tylor = cues
+
 const toggleVideo = ($item, location) => {
   if ($item.hasClass('active')) {
     return hideVideo()
@@ -152,6 +166,44 @@ const toggleList = () => {
   return false;
 }
 
+
+var replaceText = function(text) {
+  $('.captions').html(text);
+};
+
+var showText = function() {
+  $('.captions').show();
+};
+
+var hideText = function() {
+  $('.captions').hide();
+};
+
+var cueEnter = function() {
+  replaceText(this.text);
+  showText();
+};
+
+var cueExit = function() {
+  hideText();
+};
+
+var videoLoaded = function(e) {
+  console.log('videoLoaded')
+  for (var i in cues) {
+    var cue = cues[i];
+    if (typeof cue === 'object') {
+      cue.onenter = cueEnter;
+      cue.onexit = cueExit;
+    }
+  }
+};
+
+var playVideo = function(e) {
+  console.log('playVideo')
+  $videoPlayer.get(0).play();
+};
+
 const showVideo = (location) => {
   $('.building.active, .location.active').removeClass('active')
   $(`#${location.id}, #list-${location.id}`).addClass('visited active')
@@ -161,7 +213,12 @@ const showVideo = (location) => {
   $videoPlayer.get(0).currentTime = 0
   $('.progress').css({ transform: 'scaleX(0.00001)' })
   $modal.addClass('active')
+  // $videoPlayer.get(0).play()
+  $videoPlayer.get(0).addEventListener('loadedmetadata', videoLoaded);
+  $videoPlayer.get(0).addEventListener('load', playVideo);
+  // $videoPlayer.get(0).load();
   $videoPlayer.get(0).play()
+  // $videoPlayer.get(0).textTracks[0].mode = 'showing'
   return false
 }
 

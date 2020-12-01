@@ -110,6 +110,24 @@ $orange: #E45300;
         &.emoji-stars { background-image: url(./images/emoji-stars.svg); }
         &.emoji-smile { background-image: url(./images/emoji-smile.svg); }
       }
+      .top {
+        display: flex;
+        align-items: flex-end;
+      }
+      .caption-wrap {
+        flex: 1;
+        padding-right: 58px;
+        text-align: center;
+      }
+      .captions {
+        display: inline-block;
+        padding: 5px 12px;
+        color: white;
+        background: rgba(0,0,0,.8);
+        margin: 0 25px 15px;
+        border-radius: 10px;
+        text-align: center;
+      }
       .meta-reaction {
         padding: 0px 15px 10px;
         display: flex;
