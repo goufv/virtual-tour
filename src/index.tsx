@@ -166,7 +166,7 @@ const toggleList = () => {
   return false;
 }
 
-
+// https://stackoverflow.com/a/45087610
 var replaceText = function(text) {
   $('.captions').html(text);
 };
@@ -189,7 +189,6 @@ var cueExit = function() {
 };
 
 var videoLoaded = function(e) {
-  console.log('videoLoaded')
   for (var i in cues) {
     var cue = cues[i];
     if (typeof cue === 'object') {
@@ -209,14 +208,14 @@ const showVideo = (location) => {
   $(`#${location.id}, #list-${location.id}`).addClass('visited active')
   $videoPlayer.find('source').attr('src', location.video)
   $modal.find('.name').html(location.name)
-  $videoPlayer.get(0).load()
+  // $videoPlayer.get(0).load()
   $videoPlayer.get(0).currentTime = 0
   $('.progress').css({ transform: 'scaleX(0.00001)' })
   $modal.addClass('active')
   // $videoPlayer.get(0).play()
   $videoPlayer.get(0).addEventListener('loadedmetadata', videoLoaded);
   $videoPlayer.get(0).addEventListener('load', playVideo);
-  // $videoPlayer.get(0).load();
+  $videoPlayer.get(0).load();
   $videoPlayer.get(0).play()
   // $videoPlayer.get(0).textTracks[0].mode = 'showing'
   return false
