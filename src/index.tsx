@@ -5,7 +5,7 @@
 import $ from "jquery"
 import map from 'url:./map.svg'
 import buildingIcon from 'url:./building.jpg'
-import captions from 'url:./test.vtt'
+import captions from 'url:./Building-E.vtt'
 
 document.write(`
   <div id="ufv-map-root">
