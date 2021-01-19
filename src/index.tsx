@@ -1,7 +1,7 @@
 // import React from "react"
 // import { render } from "react-dom"
 
-// import('./index.scss')
+import('./index.scss')
 import $ from "jquery"
 import map from 'url:./map.svg'
 import buildingIcon from 'url:./building.jpg'
