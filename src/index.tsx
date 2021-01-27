@@ -169,6 +169,7 @@ var hideText = function() {
 };
 
 var cueEnter = function() {
+  document.querySelector('video').textTracks[0].mode = "hidden";
   replaceText(this.text);
   showText();
 };
@@ -185,7 +186,6 @@ var videoLoaded = function(e) {
       cue.onexit = cueExit;
     }
   }
-  $videoPlayer.get(0).textTracks[0].mode = "hidden";
 };
 
 var playVideo = function(e) {
