@@ -185,6 +185,7 @@ var videoLoaded = function(e) {
       cue.onexit = cueExit;
     }
   }
+  $videoPlayer.get(0).textTracks[0].mode = "hidden";
 };
 
 var playVideo = function(e) {
