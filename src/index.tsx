@@ -54,68 +54,68 @@ document.write(`
 const locations = [
   {
     id: 'building-1',
-    name: 'Building 1',
-    video: 'https://ddwhdx18r9qya.cloudfront.net/ufv/IMG_9148_720_audio.mp4',
+    name: 'A-Abby',
+    video: 'A-Abby',
     icon: buildingIcon,
   },
   {
     id: 'building-2',
-    name: 'Building 2',
-    video: 'https://ddwhdx18r9qya.cloudfront.net/ufv/F_building_1_720_smaller.mp4',
+    name: 'B-Building',
+    video: 'B-Building',
     icon: buildingIcon,
   },
   {
     id: 'building-3',
-    name: 'Building 3',
-    video: 'https://ddwhdx18r9qya.cloudfront.net/ufv/IMG_9078_720_smaller.mp4',
+    name: 'B',
+    video: 'B',
     icon: buildingIcon,
   },
   {
     id: 'building-4',
-    name: 'Building 4',
-    video: 'https://ddwhdx18r9qya.cloudfront.net/ufv/IMG_9076_720_smaller.mp4',
+    name: 'Baker-House',
+    video: 'Baker-House',
     icon: buildingIcon,
   },
   {
     id: 'building-5',
-    name: 'Building 5',
-    video: 'https://ddwhdx18r9qya.cloudfront.net/ufv/IMG_9077_720_smaller.mp4',
+    name: 'Chilliwack-CEP-A',
+    video: 'Chilliwack-CEP-A',
     icon: buildingIcon,
   },
   {
     id: 'building-6',
-    name: 'Building 6',
-    video: 'https://ddwhdx18r9qya.cloudfront.net/ufv/IMG_9078_720_smaller.mp4',
+    name: 'Chilliwack-TTC',
+    video: 'Chilliwack-TTC',
     icon: buildingIcon,
   },
   {
     id: 'building-7',
-    name: 'Building 7',
-    video: 'https://ddwhdx18r9qya.cloudfront.net/ufv/IMG_9076_720_smaller.mp4',
+    name: 'E',
+    video: 'E',
     icon: buildingIcon,
   },
   {
     id: 'building-8',
-    name: 'Building 8',
-    video: 'https://ddwhdx18r9qya.cloudfront.net/ufv/IMG_9077_720_smaller.mp4',
+    name: 'G',
+    video: 'G',
     icon: buildingIcon,
   },
   {
     id: 'building-9',
-    name: 'Building 9',
-    video: 'https://ddwhdx18r9qya.cloudfront.net/ufv/IMG_9078_720_smaller.mp4',
+    name: 'Indigenous-Gathering',
+    video: 'Indigenous-Gathering',
     icon: buildingIcon,
   },
   {
     id: 'building-10',
-    name: 'Building 10',
-    video: 'https://ddwhdx18r9qya.cloudfront.net/ufv/IMG_9076_720_smaller.mp4',
+    name: 'S',
+    video: 'S',
     icon: buildingIcon,
   },
   {
     id: 'building-11',
-    name: 'Building 11',
-    video: 'https://ddwhdx18r9qya.cloudfront.net/ufv/IMG_9077_720_smaller.mp4',
+    name: 'S',
+    video: 'S',
     icon: buildingIcon,
   },
 ]
@@ -196,7 +196,7 @@ var playVideo = function(e) {
 const showVideo = (location) => {
   $('.building.active, .location.active').removeClass('active')
   $(`#${location.id}, #list-${location.id}`).addClass('visited active')
-  $videoPlayer.find('source').attr('src', location.video)
+  $videoPlayer.find('source').attr('src', `https://ddwhdx18r9qya.cloudfront.net/ufv/${location.video}.mp4`)
   $modal.find('.name').html(location.name)
   // $videoPlayer.get(0).load()
   $videoPlayer.get(0).currentTime = 0
