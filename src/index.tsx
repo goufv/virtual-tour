@@ -429,7 +429,6 @@ const showVideo = (video) => {
   $('.progress').css({ transform: 'scaleX(0.00001)' })
   $modal.addClass('active')
   // $videoPlayer.get(0).play()
-  // $videoPlayer.get(0).addEventListener('ended', hideVideo);
   $videoPlayer.get(0).load();
   $videoPlayer.get(0).play();
   // $videoPlayer.get(0).textTracks[0].mode = 'showing'
@@ -492,6 +491,7 @@ const setup = (svgData) => {
   })
   $videoPlayer.on('loadedmetadata', videoLoaded);
   $videoPlayer.on('load', playVideo);
+  $videoPlayer.on('ended', hideVideo);
 
   if (window.location.hash !== '') {
     const location = locations.find((l) => l.id === window.location.hash.replace('#', ''))

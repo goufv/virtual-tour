@@ -64,7 +64,7 @@ $weight-medium: 600;
     &.green {
       width: 23px;
       height: 23px;
-      margin: 5px;
+      margin: 10px;
       background-color: #8DC63F;
       background-repeat: no-repeat;
       background-position: center;
@@ -198,8 +198,14 @@ $weight-medium: 600;
         position: absolute;
         top: 0;
         right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
         .icon {
           margin-bottom: 20px;
+        }
+        .back {
+          margin-bottom: 10px;
         }
       }
       .meta-reaction {
