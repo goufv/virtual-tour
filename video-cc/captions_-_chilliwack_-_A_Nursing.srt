@@ -1,0 +1,37 @@
+1
+00:00:00,160 --> 00:00:03,200
+Hi! My name is Carly and I'm a 
+fourth-year Bachelor of Science
+
+2
+00:00:03,200 --> 00:00:06,960
+in Nursing student in the Faculty of Health Sciences. Come for a tour with me! 
+
+3
+00:00:11,520 --> 00:00:15,520
+As a nursing student, I spend a lot of time here in Building A, 
+
+4
+00:00:15,520 --> 00:00:20,480
+especially in the simulation lab. I love the unique balance between in the classroom 
+
+5
+00:00:20,480 --> 00:00:26,320
+learning and hands-on clinical experience. There really isn’t any better way to learn than by doing!
+
+6
+00:00:28,320 --> 00:00:32,960
+And this is the Student Services Centre. Whether it’s questions about admissions or planning for  
+
+7
+00:00:32,960 --> 00:00:38,080
+academic success you can book an appointment online and speak to a friendly UFV advisor  
+
+8
+00:00:38,640 --> 00:00:44,560
+My personal favorite part about studying at UFV is the great long-lasting relationships that I've  
+
+9
+00:00:44,560 --> 00:00:49,280
+built. Join this awesome community and become a leader in healthcare. 
+
