@@ -458,7 +458,7 @@ const setup = (svgData) => {
   })
 
   $('[data-playlist]').each((_, playlist) => {
-    playlistId = $(playlist).data('playlist')
+    let playlistId = $(playlist).data('playlist')
     $(playlist).find('.video').each((i, video) => {
       let location = locations.find(location => location.id === playlistId)
       $(video).on('click', () => {

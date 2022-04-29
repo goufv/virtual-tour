@@ -10,7 +10,7 @@
   "scripts": {
     "start": "parcel serve ./src/index.html",
     "build": "parcel build --public-url /ufv-tour/ ./src/index.html",
-    "predeploy": "rm -r dist && npm run build",
+    "predeploy": "rm -r dist && npm run build && cp src/map-final-01.svg dist/map-final-01.6be591de.svg",
     "deploy": "gh-pages -d dist",
     "convert": "sh convert-videos.sh",
     "oldprepvideoold": "ffmpeg -i IMG_9078.MOV -vf scale=\"720:-1\" -vcodec h264 -acodec mp2 IMG_9078.mp4",
