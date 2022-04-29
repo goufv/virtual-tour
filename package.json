@@ -1,6 +1,5 @@
 {
   "name": "ufv",
-  "main": "dist/index.js",
   "license": "MIT",
   "homepage": "http://denimandsteel.github.io/ufv-tour",
   "targets": {
@@ -11,7 +10,7 @@
   "scripts": {
     "start": "parcel serve ./src/index.html",
     "build": "parcel build --public-url /ufv-tour/ ./src/index.html",
-    "predeploy": "rm -r dist && yarn run build",
+    "predeploy": "rm -r dist && npm run build",
     "deploy": "gh-pages -d dist",
     "convert": "sh convert-videos.sh",
     "oldprepvideoold": "ffmpeg -i IMG_9078.MOV -vf scale=\"720:-1\" -vcodec h264 -acodec mp2 IMG_9078.mp4",
