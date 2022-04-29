@@ -452,7 +452,7 @@ const setup = (svgData) => {
     $item.on('touchstart', (e) => { return toggleVideo(location) })
     $item.on('click', (e) => { return toggleVideo(location) })
 
-    $el = $('.locations [data-location="' + location.id + '"]')
+    let $el = $('.locations [data-location="' + location.id + '"]')
     $el.on('click', (e) => { return toggleVideo(location) })
     $el.on('touchstart', (e) => { return toggleVideo(location) })
   })
