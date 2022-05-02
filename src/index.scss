@@ -42,13 +42,18 @@ $breakpoint-tablet-up: 500px;
       position: relative; 
     }
     &.green {
-      width: 23px;
-      height: 23px;
+      width: 15px;
+      height: 15px;
+      background-size: 25px 25px;
+      @media screen and (min-width: 400px) {
+        width: 23px;
+        height: 23px;
+        background-size: 28px 28px;
+      }
       margin: 10px;
       background-color: #8DC63F;
       background-repeat: no-repeat;
       background-position: center;
-      background-size: 28px 28px;
       border-radius: 100%;
       box-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
@@ -182,7 +187,7 @@ $breakpoint-tablet-up: 500px;
       background: rgba(255,255,255,0.5);
     }
     .video-wrap {
-      overflow: hidden;
+      // overflow: hidden;
       position: relative;
       height: 0;
       width: 90%;
@@ -228,10 +233,16 @@ $breakpoint-tablet-up: 500px;
         flex-direction: column;
         align-items: flex-end;
         .icon {
-          margin-bottom: 20px;
+          margin-bottom: 10px;
+          @media screen and (min-width: 400px) {
+            margin-bottom: 20px;
+          }
         }
         .back {
-          margin-bottom: 10px;
+          margin-bottom: 0;
+          @media screen and (min-width: 400px) {
+            margin-bottom: 10px;
+          }
         }
       }
       .meta-reaction {
@@ -262,7 +273,7 @@ $breakpoint-tablet-up: 500px;
     }
     .bottom-controls {
       position: absolute;
-      bottom: 0px;
+      bottom: -8px;
       width: 100%;
       z-index: 1;
 

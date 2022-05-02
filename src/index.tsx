@@ -182,9 +182,8 @@ $(`
             <div class="progress"></div>
           </div>
           <video id="video" muted playsinline preload width="600" height="800">
-            <source id="mp4_src" src="" type="video/mp4"> 
-            <source id="webm_src" src="" type="video/webm"> 
-            <track label="English" kind="subtitles" mode="showing" srclang="en" src="" default>
+            <source id="mp4_src" src="" type="video/mp4">
+            <source id="webm_src" src="" type="video/webm">
           </video>
         </div>
       </div>
@@ -320,9 +319,9 @@ const locations = [
 const $videoPlayer = $('#video')
 const $modal = $('.modal')
 
-const tracks = $videoPlayer.get(0).textTracks[0]
-tracks.mode = 'hidden'
-const cues = tracks.cues
+// let tracks = $videoPlayer.get(0).textTracks[0]
+// tracks.mode = 'hidden'
+// let cues = tracks.cues
 
 let currentVideo = null
 
@@ -376,7 +375,7 @@ var hideText = function() {
 };
 
 var cueEnter = function() {
-  document.querySelector('video').textTracks[0].mode = "hidden";
+  // document.querySelector('video').textTracks[0].mode = "hidden";
   replaceText(this.text);
   showText();
 };
@@ -386,18 +385,29 @@ var cueExit = function() {
 };
 
 var videoLoaded = function(e) {
-  for (var i in cues) {
-    var cue = cues[i];
-    if (typeof cue === 'object') {
-      cue.onenter = cueEnter;
-      cue.onexit = cueExit;
-    }
-  }
+  // document.querySelector('video').textTracks[0].mode = ''
+  console.log('videoLoaded', $videoPlayer.get(0).textTracks[0])
 };
 
 var playVideo = function(e) {
   console.log('playVideo')
-  $videoPlayer.get(0).play();
+  // let tracks = $videoPlayer.get(0).textTracks[0]
+  // $videoPlayer.get(0).textTracks[0].mode = 'hidden'
+  // $videoPlayer.get(0).textTracks[0].mode = 'showing'
+  // console.log(tracks)
+  // tracks.mode = 'hidden'
+  // if (tracks.cues) {
+
+    // for (var i in tracks.cues) {
+    //   var cue = cues[i];
+    //   console.log(cue)
+    //   if (typeof cue === 'object') {
+    //     cue.onenter = cueEnter;
+    //     cue.onexit = cueExit;
+    //   }
+    // }
+    // $videoPlayer.get(0).play();
+  // }
 };
 
 const showPlaylist = (location) => {
@@ -426,11 +436,10 @@ const showVideo = (video) => {
     currentVideo = video
     $videoPlayer.find('#mp4_src').attr('src', `https://ddwhdx18r9qya.cloudfront.net/ufv/videos/${video.file}.mp4`)
     $videoPlayer.find('#webm_src').attr('src', `https://ddwhdx18r9qya.cloudfront.net/ufv/videos/${video.file}.webm`)
+    $videoPlayer.find('track').remove()
     if (video.captions) {
-      $videoPlayer.find('track').attr('src', video.captions)
-    }
-    else {
-      $videoPlayer.find('track').attr('src', '')
+      $(`<track label="other" kind="captions" srclang="en" src="${video.captions}">`).appendTo($videoPlayer)
+      $videoPlayer.get(0).textTracks[0].mode = 'showing';
     }
     $modal.find('h1').html(video.title)
     $modal.find('h2').html(video.subtitle)
@@ -475,6 +484,7 @@ const setup = (svgData) => {
       let location = locations.find(location => location.id === playlistId)
       $(video).on('click', () => {
         $(video).addClass('visited')
+        $videoPlayer.get(0).textTracks[0].mode = 'showing'
         showVideo(location.videos[i])
         return false;
       })
@@ -504,13 +514,13 @@ const setup = (svgData) => {
     $('.progress').css({ transform: 'scaleX(' + ($videoPlayer.get(0).currentTime / $videoPlayer.get(0).duration) + ')' })
   })
   $videoPlayer.on('loadedmetadata', videoLoaded);
-  $videoPlayer.on('load', playVideo);
+  $videoPlayer.on('play', playVideo);
   $videoPlayer.on('ended', hideVideo);
 
   if (window.location.hash !== '') {
     const location = locations.find((l) => l.id === window.location.hash.replace('#', ''))
     if (location) {
-      showVideo(location)
+      showVideo(location.videos[0])
     }
   }
 }
