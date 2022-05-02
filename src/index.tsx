@@ -326,6 +326,8 @@ const tracks = $videoPlayer.get(0).textTracks[0]
 tracks.mode = 'hidden'
 const cues = tracks.cues
 
+let currentVideo = null
+
 const toggleVideo = (location) => {
   $('.map #' + location.id + ', .locations [data-location="' + location.id + '"]').addClass('visited')
   $('.instructions').addClass('hide')
@@ -413,28 +415,35 @@ const hidePlaylist = (location) => {
 
 const showVideo = (video) => {
   $('.building.active, .location.active').removeClass('active')
-  // $(`#${location.id}, #list-${location.id}`).addClass('visited active')
-  $videoPlayer.find('#mp4_src').attr('src', `https://ddwhdx18r9qya.cloudfront.net/ufv/videos/${video.file}.mp4`)
-  $videoPlayer.find('#webm_src').attr('src', `https://ddwhdx18r9qya.cloudfront.net/ufv/videos/${video.file}.webm`)
-  if (video.captions) {
-    $videoPlayer.find('track').attr('src', video.captions)
+  hideText()
+  if (currentVideo === video) {
+    $videoPlayer.get(0).currentTime = 0
   }
   else {
-    $videoPlayer.find('track').attr('src', '')
+    currentVideo = video
+    $videoPlayer.find('#mp4_src').attr('src', `https://ddwhdx18r9qya.cloudfront.net/ufv/videos/${video.file}.mp4`)
+    $videoPlayer.find('#webm_src').attr('src', `https://ddwhdx18r9qya.cloudfront.net/ufv/videos/${video.file}.webm`)
+    if (video.captions) {
+      $videoPlayer.find('track').attr('src', video.captions)
+    }
+    else {
+      $videoPlayer.find('track').attr('src', '')
+    }
+    $modal.find('h1').html(video.title)
+    $modal.find('h2').html(video.subtitle)
+    $videoPlayer.get(0).load();
   }
-  $modal.find('h1').html(video.title)
-  $modal.find('h2').html(video.subtitle)
-  // $videoPlayer.get(0).load()
-  $videoPlayer.get(0).currentTime = 0
   $('.progress').css({ transform: 'scaleX(0.00001)' })
-  $modal.addClass('active')
-  $videoPlayer.get(0).load();
+  
   $videoPlayer.get(0).play();
   // $videoPlayer.get(0).textTracks[0].mode = 'showing'
+
+  $modal.addClass('active')
   return false
 }
 
 const hideVideo = () => {
+  console.log('hideVideo')
   $videoPlayer.get(0).pause()
   $videoPlayer.find('#mp4_src').attr('src', ``)
   $videoPlayer.find('#webm_src').attr('src', ``)
@@ -475,8 +484,8 @@ const setup = (svgData) => {
   $modal.find('.back, .backdrop').on('click', hideVideo)
   // $modal.find('.sound').on('touchstart', toggleSound)
   $modal.find('.sound').on('click', toggleSound)
-  // $modal.find('.meta-reaction .icon').on('touchstart', emote)
-  $modal.find('.meta-reaction .icon').on('click', emote)
+  // $modal.find('.thumbs').on('touchstart', emote)
+  $modal.find('.thumbs').on('click', emote)
 
   $videoPlayer.on('click', () => {
     let playing = !!($videoPlayer.get(0).currentTime > 0 && !$videoPlayer.get(0).paused && !$videoPlayer.get(0).ended && $videoPlayer.get(0).readyState > 2);

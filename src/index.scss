@@ -76,6 +76,20 @@ $breakpoint-tablet-up: 500px;
         background-color: lighten(#8DC63F, 10%);
       }
     }
+    @keyframes spin {
+      0% {
+        transform: rotate(0) scale(1);
+      }
+      50% {
+        transform: rotate(360deg) scale(1.25);
+      }
+      100% {
+        transform: rotate(720deg) scale(1);
+      }
+    }
+    &.emote {
+      animation: spin 500ms;
+    }
   }
   .stage {
     // margin: 0 auto;
@@ -257,9 +271,12 @@ $breakpoint-tablet-up: 500px;
         padding: 5px 12px;
         color: white;
         background: rgba(0,0,0,.8);
-        margin: 0 25px 15px;
+        margin: 0 25px 5px;
         border-radius: 10px;
         text-align: center;
+        font-size: 14px;
+        line-height: 1.15;
+        pointer-events: none;
       }
       .progress {
         height: 8px;
@@ -316,14 +333,17 @@ $breakpoint-tablet-up: 500px;
   .locations {
     position: relative;
     .toggle {
+      $scale: 1.15;
       background: url(./images/toggle-map.svg);
-      background-size: contain;
-      width: 98px;
-      height: 62px;
+      background-size: 80px*$scale 44px*$scale;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 80px*$scale;
+      height: 44px*$scale;
       z-index: 1;
       position: absolute;
-      bottom: 2px;
-      right: 2px;
+      bottom: 5px;
+      right: 5px;
       text-indent: -9999px;
       cursor: pointer;
       // Bigger tap area.
@@ -366,6 +386,14 @@ $breakpoint-tablet-up: 500px;
         &:hover, &.visited {
           #Hover, [data-name="Hover"] {
             display: none;
+          }
+        }
+        #Visited, [data-name="Visited"] {
+          display: none;
+        }
+        &.visited {
+          #Visited, [data-name="Visited"] {
+            display: initial;
           }
         }
       }
@@ -412,6 +440,7 @@ $breakpoint-tablet-up: 500px;
       .image {
         width: 20%;
         margin-right: 15px;
+        position: relative;
         img {
           display: block;
           width: 100%;
@@ -431,6 +460,24 @@ $breakpoint-tablet-up: 500px;
           }
           .hover {
             display: block;
+          }
+        }
+      }
+      &.visited {
+        .image {
+          &:after {
+            content: '';
+            background: #8DC63F;
+            background-image: url(./images/checkmark.svg);
+            background-size: 14px 14px;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            bottom: -3px;
+            right: -8px;
+            border-radius: 100%;
           }
         }
       }
