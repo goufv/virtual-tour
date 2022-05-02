@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="160px" height="98px" viewBox="0 0 160 98" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="175px" height="102px" viewBox="0 0 175 102" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>toggle-map</title>
     <defs>
-        <rect id="path-1" x="0" y="0" width="160" height="88" rx="44"></rect>
+        <rect id="path-1" x="7" y="4" width="160" height="88" rx="44"></rect>
         <filter x="-8.8%" y="-11.4%" width="117.5%" height="131.8%" filterUnits="objectBoundingBox" id="filter-2">
             <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
             <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
@@ -14,13 +14,13 @@
             <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
             <use fill="#FFFFFF" xlink:href="#path-1"></use>
         </g>
-        <rect id="Rectangle-Copy" stroke="#E6E6E6" stroke-width="4" x="12" y="12" width="136" height="64" rx="32"></rect>
-        <circle id="Oval" fill="#8DC63F" fill-rule="nonzero" cx="44" cy="44" r="38"></circle>
-        <g id="location_on_black_36dp" opacity="0.9" transform="translate(21.000000, 20.000000)">
+        <rect id="Rectangle-Copy" stroke="#E6E6E6" stroke-width="4" x="19" y="16" width="136" height="64" rx="32"></rect>
+        <circle id="Oval" fill="#8DC63F" fill-rule="nonzero" cx="51" cy="48" r="38"></circle>
+        <g id="location_on_black_36dp" opacity="0.9" transform="translate(28.000000, 24.000000)">
             <polygon id="Path" points="0 0 52 0 52 52 0 52"></polygon>
             <path d="M23.1666667,4 C14.7816667,4 8,10.7816667 8,19.1666667 C8,30.5416667 23.1666667,47.3333333 23.1666667,47.3333333 C23.1666667,47.3333333 38.3333333,30.5416667 38.3333333,19.1666667 C38.3333333,10.7816667 31.5516667,4 23.1666667,4 Z M23.1666667,24.5833333 C20.1766667,24.5833333 17.75,22.1566667 17.75,19.1666667 C17.75,16.1766667 20.1766667,13.75 23.1666667,13.75 C26.1566667,13.75 28.5833333,16.1766667 28.5833333,19.1666667 C28.5833333,22.1566667 26.1566667,24.5833333 23.1666667,24.5833333 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
         </g>
-        <g id="list" transform="translate(100.000000, 32.000000)" fill="#262626" fill-rule="nonzero">
+        <g id="list" transform="translate(107.000000, 36.000000)" fill="#262626" fill-rule="nonzero">
             <path d="M4.6656,2.3328 C4.6656,5.4432 0,5.4432 0,2.3328 C0,-0.7776 4.6656,-0.7776 4.6656,2.3328" id="Fill-1"></path>
             <polygon id="Fill-2" points="8.1648 4.6656 33.8256 4.6656 33.8256 0 8.1648 0"></polygon>
             <path d="M4.6656,12.8312187 C4.6656,15.9405271 0,15.9405271 0,12.8312187 C0,9.71972712 4.6656,9.71972712 4.6656,12.8312187" id="Fill-3"></path>
