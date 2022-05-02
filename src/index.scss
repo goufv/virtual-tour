@@ -274,6 +274,9 @@ $breakpoint-tablet-up: 500px;
     .bottom-controls {
       position: absolute;
       bottom: -8px;
+      @media screen and (min-width: 750px) {
+        bottom: 0px;
+      }
       width: 100%;
       z-index: 1;
 
