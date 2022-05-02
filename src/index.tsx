@@ -448,12 +448,12 @@ const setup = (svgData) => {
 
   locations.forEach((location) => {
     const $item = $('.map #' + location.id)
-    $item.on('touchstart', (e) => { return toggleVideo(location) })
+    // $item.on('touchstart', (e) => { return toggleVideo(location) })
     $item.on('click', (e) => { return toggleVideo(location) })
 
     let $el = $('.locations [data-location="' + location.id + '"]')
     $el.on('click', (e) => { return toggleVideo(location) })
-    $el.on('touchstart', (e) => { return toggleVideo(location) })
+    // $el.on('touchstart', (e) => { return toggleVideo(location) })
   })
 
   $('[data-playlist]').each((_, playlist) => {
@@ -466,15 +466,15 @@ const setup = (svgData) => {
       })
     })
   })
-  $('.locations .toggle').on('touchstart', toggleList)
+  // $('.locations .toggle').on('touchstart', toggleList)
   $('.locations .toggle').on('click', toggleList)
-  $('.playlist .back').on('touchstart', hidePlaylist)
+  // $('.playlist .back').on('touchstart', hidePlaylist)
   $('.playlist .back').on('click', hidePlaylist)
-  $modal.find('.back, .backdrop').on('touchstart', hideVideo)
+  // $modal.find('.back, .backdrop').on('touchstart', hideVideo)
   $modal.find('.back, .backdrop').on('click', hideVideo)
-  $modal.find('.sound').on('touchstart', toggleSound)
+  // $modal.find('.sound').on('touchstart', toggleSound)
   $modal.find('.sound').on('click', toggleSound)
-  $modal.find('.meta-reaction .icon').on('touchstart', emote)
+  // $modal.find('.meta-reaction .icon').on('touchstart', emote)
   $modal.find('.meta-reaction .icon').on('click', emote)
 
   $videoPlayer.on('click', () => {
