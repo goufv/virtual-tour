@@ -39,28 +39,7 @@ $breakpoint-tablet-up: 500px;
     &.sound.active { background-image: url(./images/icons/sound.svg); }
     &.thumbs { background-image: url(./images/icons/thumbs.svg); }
     &.hoverable {
-      position: relative;
-      &.back:hover {
-        &:before {
-          content: '';
-          position: absolute;
-          top: 5px;
-          right: 5px;
-          bottom: 5px;
-          left: 5px;
-          background-color: $dark-green;
-          background-image: url(./images/icons/close-white.svg);
-          background-repeat: no-repeat;
-          background-position: center;
-          border-radius: 100%;
-        }
-      }
-      &.back.white:hover {
-        &:before {
-          background-color: white;
-          background-image: url(./images/icons/close.svg);
-        }
-      }
+      position: relative; 
     }
     &.green {
       width: 23px;
@@ -72,9 +51,6 @@ $breakpoint-tablet-up: 500px;
       background-size: 28px 28px;
       border-radius: 100%;
       box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-      &:hover {
-        background-color: lighten(#8DC63F, 10%);
-      }
     }
     @keyframes spin {
       0% {
@@ -89,6 +65,38 @@ $breakpoint-tablet-up: 500px;
     }
     &.emote {
       animation: spin 500ms;
+    }
+  }
+  &.is-pointer {
+    .icon {
+      &.hoverable {
+        &.back:hover {
+          &:before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            bottom: 5px;
+            left: 5px;
+            background-color: $dark-green;
+            background-image: url(./images/icons/close-white.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 100%;
+          }
+        }
+        &.back.white:hover {
+          &:before {
+            background-color: white;
+            background-image: url(./images/icons/close.svg);
+          }
+        }
+      }
+      &.green {
+        &:hover {
+          background-color: lighten(#8DC63F, 10%);
+        }
+      }
     }
   }
   .stage {
@@ -319,16 +327,68 @@ $breakpoint-tablet-up: 500px;
     }
 
   }
-  .building {
-    cursor: pointer;
-    .hover,
-    &.visited .initial,
-    .active { display: none; }
-    &:hover .hover,
-    &.visited .active { display: block; }
-    &:hover .initial { opacity: 1; }
-  }
+  // .building {
+  //   background: red !important;
+  //   cursor: pointer;
+  //   .hover,
+  //   &.visited .initial,
+  //   .active { display: none; }
+  //   &.visited .active { display: block; }
+  // }
+  // &.is-pointer {
+  //   &:hover .hover { display: block; }
+  //   &:hover .initial { opacity: 1; }
+  // }
   /*.building .initial { opacity: .7; }*/
+
+  .map {
+    position: relative;
+    height: 0;
+    width: 100%;
+    padding: 0;
+    padding-bottom: calc(100% * (4/3));
+    svg {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+    }
+    #Texture {
+      pointer-events: none;
+    }
+    #Buildings > g#Building_C {
+      opacity: 0.5;
+      #Visited, [data-name="Visited"] {
+        display: none;
+      }
+    }
+    #Buildings > g:not(#Building_C) {
+      cursor: pointer;
+      &.visited {
+        #Hover, [data-name="Hover"] {
+          display: none;
+        }
+      }
+      #Visited, [data-name="Visited"] {
+        display: none;
+      }
+      &.visited {
+        #Visited, [data-name="Visited"] {
+          display: initial;
+        }
+      }
+    }
+  }
+  &.is-pointer {
+    #Buildings > g:not(#Building_C) {
+      &:hover {
+        #Hover, [data-name="Hover"] {
+          display: none;
+        }
+      }
+    }
+  }
 
   .locations {
     position: relative;
@@ -360,42 +420,6 @@ $breakpoint-tablet-up: 500px;
       }
       &.hide {
         display: none;
-      }
-    }
-    .map {
-      position: relative;
-      height: 0;
-      width: 100%;
-      padding: 0;
-      padding-bottom: calc(100% * (4/3));
-      svg {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        left: 0;
-        top: 0;
-      }
-      #Texture {
-        pointer-events: none;
-      }
-      #Buildings > g#Building_C {
-        opacity: 0.5;
-      }
-      #Buildings > g:not(#Building_C) {
-        cursor: pointer;
-        &:hover, &.visited {
-          #Hover, [data-name="Hover"] {
-            display: none;
-          }
-        }
-        #Visited, [data-name="Visited"] {
-          display: none;
-        }
-        &.visited {
-          #Visited, [data-name="Visited"] {
-            display: initial;
-          }
-        }
       }
     }
     .list {
@@ -453,7 +477,7 @@ $breakpoint-tablet-up: 500px;
       .text {
         flex: 1;
       }
-      &:hover, &.visited {
+      &.visited {
         .image {
           .default {
             display: none;
@@ -505,12 +529,6 @@ $breakpoint-tablet-up: 500px;
       }
       &.visited {
         // color: #888;
-      }
-      &:hover {
-        background: $dark-green;
-        color: white;
-        // color: $orange;
-        // color: $pale-green;
       }
       &.active {
         color: $orange;
@@ -586,9 +604,54 @@ $breakpoint-tablet-up: 500px;
           h3 {
             flex: 1;
           }
-          &:hover {
-            background: $dark-green;
-            color: white;
+          &.visited {
+            .preview {
+              position: relative;
+              &:after {
+                content: '';
+                background: #8DC63F;
+                background-image: url(./images/checkmark.svg);
+                background-size: 14px 14px;
+                background-repeat: no-repeat;
+                background-position: center;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                bottom: -5px;
+                right: -8px;
+                border-radius: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.is-pointer {
+    .locations {
+      .location {
+        &:hover {
+          background: $dark-green;
+          color: white;
+          // color: $orange;
+          // color: $pale-green;
+          .image {
+            .default {
+              display: none;
+            }
+            .hover {
+              display: block;
+            }
+          }
+        }
+      }
+      .playlist {
+        .videos {
+          .video {
+            &:hover {
+              background: $dark-green;
+              color: white;
+            }
           }
         }
       }

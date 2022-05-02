@@ -4,8 +4,6 @@
 import('./index.scss')
 import $ from "jquery"
 import map from 'url:./map-final-01.svg'
-import buildingIcon from 'url:./building.jpg'
-// import captions from 'url:../video-cc/captions_A_Abbey.srt'
 
 import thumbnail_Building_A from 'url:./buildings/buildings_Building_A.svg'
 import thumbnail_Building_A_hover from 'url:./buildings/buildings_hover_Building_A.svg'
@@ -328,6 +326,10 @@ const cues = tracks.cues
 
 let currentVideo = null
 
+const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)
+
+$("#ufv-map-root").addClass(isTouch ? 'is-touch' : 'is-pointer')
+
 const toggleVideo = (location) => {
   $('.map #' + location.id + ', .locations [data-location="' + location.id + '"]').addClass('visited')
   $('.instructions').addClass('hide')
@@ -347,6 +349,7 @@ const toggleSound = () => {
 
 const emote = (e) => {
   console.log($(e.target));
+  // TODO: Hook up GA!
   $(e.target).addClass('emote');
   setTimeout(() => {
     $(e.target).removeClass('emote');
@@ -414,7 +417,7 @@ const hidePlaylist = (location) => {
 }
 
 const showVideo = (video) => {
-  $('.building.active, .location.active').removeClass('active')
+  $('.location.active').removeClass('active')
   hideText()
   if (currentVideo === video) {
     $videoPlayer.get(0).currentTime = 0
@@ -448,7 +451,7 @@ const hideVideo = () => {
   $videoPlayer.find('#mp4_src').attr('src', ``)
   $videoPlayer.find('#webm_src').attr('src', ``)
   $modal.removeClass('active')
-  $('.building.active, .location.active').removeClass('active')
+  $('.location.active').removeClass('active')
   hideText()
   return false
 }
@@ -471,6 +474,7 @@ const setup = (svgData) => {
     $(playlist).find('.video').each((i, video) => {
       let location = locations.find(location => location.id === playlistId)
       $(video).on('click', () => {
+        $(video).addClass('visited')
         showVideo(location.videos[i])
         return false;
       })
