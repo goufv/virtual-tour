@@ -214,25 +214,25 @@ const locations = [
     subtitle: "Building B",
     videos: [
       {
-        title: "Campus Life",
+        title: "Student Services",
         subtitle: "Building B",
         file: 'B-Building',
-        captions: captions_B,
       },
       {
-        title: "Second Video",
+        title: "International Global Lounge",
         subtitle: "Building B",
         file: 'B',
+        captions: captions_B,
       },
     ],
   },
   {
     id: 'Baker_House',
-    title: "Science Labs",
+    title: "Student Residence",
     subtitle: "Baker House",
     videos: [
       {
-        title: "Science Labs",
+        title: "Student Residence",
         subtitle: "Baker House",
         file: 'Baker-House',
         captions: captions_Baker_House,
@@ -241,11 +241,11 @@ const locations = [
   },
   {
     id: 'Building_E',
-    title: "Science Labs",
+    title: "Athletic Centre",
     subtitle: "Building E",
     videos: [
       {
-        title: "Science Labs",
+        title: "Athletic Centre",
         subtitle: "Building E",
         file: 'E',
         captions: captions_E,
@@ -254,11 +254,11 @@ const locations = [
   },
   {
     id: 'Building_G',
-    title: "Science Labs",
+    title: "Library & Computer Lab",
     subtitle: "Building G",
     videos: [
       {
-        title: "Science Labs",
+        title: "Library & Computer Lab",
         subtitle: "Building G",
         file: 'G',
         captions: captions_G,
@@ -267,12 +267,12 @@ const locations = [
   },
   {
     id: 'Indigenous_Gathering',
-    title: "Science Labs",
-    subtitle: "Indigenous Gathering Place",
+    title: "Indigenous Student Center",
+    subtitle: "The Gathering Place",
     videos: [
       {
-        title: "Science Labs",
-        subtitle: "Indigenous Gathering Place",
+        title: "Indigenous Student Center",
+        subtitle: "The Gathering Place",
         file: 'Indigenous-Gathering',
         captions: captions_ISC,
       },
@@ -280,11 +280,11 @@ const locations = [
   },
   {
     id: 'Building_S',
-    title: "Science Labs",
+    title: "Student Union Building",
     subtitle: "Building S",
     videos: [
       {
-        title: "Science Labs",
+        title: "Student Union Building",
         subtitle: "Building S",
         file: 'S',
         captions: captions_S,
@@ -293,11 +293,11 @@ const locations = [
   },
   {
     id: 'Chilliwack-TTC',
-    title: "Science Labs",
+    title: "Trade and Technology Centre",
     subtitle: "Building TTC",
     videos: [
       {
-        title: "Science Labs",
+        title: "Trade and Technology Centre",
         subtitle: "Building TTC",
         file: 'Chilliwack-TTC',
         captions: captions_TTC,
@@ -306,11 +306,11 @@ const locations = [
   },
   {
     id: 'Chilliwack-CEP-A',
-    title: "Science Labs",
+    title: "Health Sciences",
     subtitle: "Building CEP-A",
     videos: [
       {
-        title: "Science Labs",
+        title: "Health Sciences",
         subtitle: "Building CEP-A",
         file: 'Chilliwack-CEP-A',
         captions: captions_chilliwack_A,
@@ -428,7 +428,6 @@ const showVideo = (video) => {
   $videoPlayer.get(0).currentTime = 0
   $('.progress').css({ transform: 'scaleX(0.00001)' })
   $modal.addClass('active')
-  // $videoPlayer.get(0).play()
   $videoPlayer.get(0).load();
   $videoPlayer.get(0).play();
   // $videoPlayer.get(0).textTracks[0].mode = 'showing'
@@ -437,6 +436,8 @@ const showVideo = (video) => {
 
 const hideVideo = () => {
   $videoPlayer.get(0).pause()
+  $videoPlayer.find('#mp4_src').attr('src', ``)
+  $videoPlayer.find('#webm_src').attr('src', ``)
   $modal.removeClass('active')
   $('.building.active, .location.active').removeClass('active')
   hideText()
