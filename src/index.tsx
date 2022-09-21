@@ -386,7 +386,7 @@ var cueExit = function() {
 
 var videoLoaded = function(e) {
   // document.querySelector('video').textTracks[0].mode = ''
-  console.log('videoLoaded', $videoPlayer.get(0).textTracks[0])
+  // console.log('videoLoaded', $videoPlayer.get(0).textTracks[0])
 };
 
 var playVideo = function(e) {
@@ -439,7 +439,9 @@ const showVideo = (video) => {
     $videoPlayer.find('track').remove()
     if (video.captions) {
       $(`<track label="other" kind="captions" srclang="en" src="${video.captions}">`).appendTo($videoPlayer)
-      $videoPlayer.get(0).textTracks[0].mode = 'showing';
+      if ($videoPlayer.get(0).textTracks.length > 0) {
+        $videoPlayer.get(0).textTracks[0].mode = 'showing';
+      }
     }
     $modal.find('h1').html(video.title)
     $modal.find('h2').html(video.subtitle)
@@ -484,7 +486,9 @@ const setup = (svgData) => {
       let location = locations.find(location => location.id === playlistId)
       $(video).on('click', () => {
         $(video).addClass('visited')
-        $videoPlayer.get(0).textTracks[0].mode = 'showing'
+        if ($videoPlayer.get(0).textTracks.length > 0) {
+          $videoPlayer.get(0).textTracks[0].mode = 'showing';
+        }
         showVideo(location.videos[i])
         return false;
       })

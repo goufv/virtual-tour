@@ -1,15 +1,15 @@
 {
   "name": "ufv",
   "license": "MIT",
-  "homepage": "http://denimandsteel.github.io/ufv-tour",
+  "homepage": "https://goufv.github.io/virtual-tour/",
   "targets": {
     "": {
-      "publicUrl": "/ufv-tour/"
+      "publicUrl": "/virtual-tour/"
     }
   },
   "scripts": {
     "start": "parcel serve ./src/index.html",
-    "build": "parcel build --public-url /ufv-tour/ ./src/index.html",
+    "build": "parcel build --public-url /virtual-tour/ ./src/index.html",
     "predeploy": "rm -r dist && npm run build && cp src/map-final-01.svg dist/map-final-01.a9ea62fb.svg",
     "deploy": "gh-pages -d dist",
     "convert": "sh convert-videos.sh",
