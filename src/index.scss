@@ -647,8 +647,10 @@ $breakpoint-tablet-up: 500px;
       .location {
         &:hover {
           background: $dark-green;
-          .text, h2, h3 {
-            color: white;
+          .text {
+            h1, h2, h3 {
+              color: white;
+            }
           }
           // color: $orange;
           // color: $pale-green;
