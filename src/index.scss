@@ -647,7 +647,9 @@ $breakpoint-tablet-up: 500px;
       .location {
         &:hover {
           background: $dark-green;
-          color: white;
+          .text, h2, h3 {
+            color: white;
+          }
           // color: $orange;
           // color: $pale-green;
           .image {
@@ -665,7 +667,9 @@ $breakpoint-tablet-up: 500px;
           .video {
             &:hover {
               background: $dark-green;
-              color: white;
+              h3 {
+                color: white;
+              }
             }
           }
         }
